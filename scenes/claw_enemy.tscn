@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://btl4chxogi321"]
+
+[ext_resource type="Texture2D" uid="uid://sg3mw1oikoex" path="res://assets/enemy.png" id="1_28ooe"]
+[ext_resource type="Script" path="res://scripts/claw_enemy.gd" id="1_wwpx5"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="3_ihtjk"]
+[ext_resource type="PackedScene" uid="uid://dhb1d80x4rhfn" path="res://scenes/death_particles.tscn" id="4_uty68"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kns05"]
+size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_2j8d6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ipaoq"]
+resource_name = "wakawaka"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6glo"]
+_data = {
+"RESET": SubResource("Animation_2j8d6"),
+"wakawaka": SubResource("Animation_ipaoq")
+}
+
+[node name="ClawEnemy" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_wwpx5")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+texture = ExtResource("1_28ooe")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_kns05")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e6glo")
+}
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("3_ihtjk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_kns05")
+
+[node name="DeathParticles" parent="." instance=ExtResource("4_uty68")]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cux6qa1eqttjr"]
+
+[ext_resource type="Script" path="res://scripts/basic_projectile.gd" id="1_pyim1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6xg5"]
+size = Vector2(2, 2)
+
+[node name="BasicProjectile" type="Area2D" node_paths=PackedStringArray("visibility_notifier")]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_pyim1")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+speed = null
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-1, -1, -1, 1, 1, 1, 1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h6xg5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

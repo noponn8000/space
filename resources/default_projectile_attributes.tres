@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ProjectileAttributes" load_steps=2 format=3 uid="uid://bolyc5pk5sd5y"]
+
+[ext_resource type="Script" path="res://projectile_attributes.gd" id="1_sqt8j"]
+
+[resource]
+script = ExtResource("1_sqt8j")
+speed = 250.0
+piercing = 1

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2nv1oifxtb0e"]
+
+[ext_resource type="FontFile" uid="uid://bujekr4x3n8i2" path="res://assets/fonts/Mystery_Font2.ttf" id="1_6ae6i"]
+
+[sub_resource type="FontVariation" id="FontVariation_6mddb"]
+base_font = ExtResource("1_6ae6i")
+spacing_space = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_kw0nf"]
+font = SubResource("FontVariation_6mddb")
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.02351, 0.984781)
+label_settings = SubResource("LabelSettings_kw0nf")
