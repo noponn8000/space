@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var pivot := $Pivot;
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var death_particles: GPUParticles2D = $DeathParticles
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var enemy_drop_manager: Node2D = $EnemyDropManager
 
 var direction := Vector2.ZERO;
 
@@ -49,5 +51,7 @@ func die() -> void:
 	death_particles.emitting = true;
 	pivot.visible = false;
 	firing = false;
+	collision_shape.set_deferred("disabled", true);
+	enemy_drop_manager.drop();
 	
 	get_tree().create_timer(1.0).timeout.connect(queue_free);

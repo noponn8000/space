@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmk4oub17jabw"]
+[gd_scene load_steps=9 format=3 uid="uid://cmk4oub17jabw"]
 
 [ext_resource type="PackedScene" uid="uid://cp8uykjmo0goh" path="res://scenes/cannon_component.tscn" id="1_e45g5"]
 [ext_resource type="Script" path="res://scripts/cross_enemy.gd" id="1_yqk7p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://80kkqlt04eg6" path="res://assets/cross_enemy.png" id="3_d40lw"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_0uagq"]
 [ext_resource type="PackedScene" uid="uid://dhb1d80x4rhfn" path="res://scenes/death_particles.tscn" id="6_o2l6d"]
+[ext_resource type="Script" path="res://scripts/enemy_drop_manager.gd" id="7_uqw7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja7qa"]
 size = Vector2(4, 4)
@@ -55,3 +56,6 @@ shape = SubResource("RectangleShape2D_ja7qa")
 shape = SubResource("RectangleShape2D_ja7qa")
 
 [node name="DeathParticles" parent="." instance=ExtResource("6_o2l6d")]
+
+[node name="EnemyDropManager" type="Node2D" parent="."]
+script = ExtResource("7_uqw7o")

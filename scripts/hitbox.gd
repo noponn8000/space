@@ -12,4 +12,4 @@ func _on_area_entered(other: Area2D) -> void:
 	if hurtbox:
 		hurtbox.register_hit(self);
 		
-	hit_registered.emit(hurtbox);
+		hit_registered.emit(hurtbox);

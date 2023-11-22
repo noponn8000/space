@@ -6,6 +6,8 @@ enum STATES { IDLE, CHASE }
 @onready var pivot: Node2D = $Pivot;
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var death_particles: GPUParticles2D = $DeathParticles
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var enemy_drop_manager: Node2D = $EnemyDropManager
 
 @export var chase_radius := 500.0;
 @export var acceleration := 50.0;
@@ -42,5 +44,8 @@ func _on_hit_registered(hitbox: Hitbox) -> void:
 func die() -> void:
 	death_particles.emitting = true;
 	pivot.visible = false;
+	hurtbox.set_deferred("monitorable", false);
+	collision_shape.set_deferred("disabled", true);
+	enemy_drop_manager.drop();
 	
 	get_tree().create_timer(1.0).timeout.connect(queue_free);

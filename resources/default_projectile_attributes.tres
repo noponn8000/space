@@ -6,3 +6,6 @@
 script = ExtResource("1_sqt8j")
 speed = 250.0
 piercing = 1
+spread = 0.0
+bounces = 0
+deceleration = 50.0

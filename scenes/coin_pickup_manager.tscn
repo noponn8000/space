@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy7smcfujlmr2"]
+
+[ext_resource type="Script" path="res://scripts/coin_pickup_manager.gd" id="1_slahc"]
+
+[node name="CoinPickupManager" type="Area2D"]
+collision_mask = 32
+script = ExtResource("1_slahc")
