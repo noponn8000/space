@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdug17a2rxj37"]
+
+[ext_resource type="Texture2D" uid="uid://quffi08l0fm1" path="res://assets/rail.png" id="1_qsrsx"]
+
+[node name="Line2D" type="Line2D"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(4, 4)
+rotation = -0.608981
+points = PackedVector2Array(1.39226, -0.2482, 28.8381, 0.605062, 68.6843, 18.6406, 72.4286, 51.7311, 52.3318, 84.0439, 5.0705, 88.878, -51.6767, 56.6173, -161.933, -30.029, -181.134, -0.748917, -172.414, 19.9625, -134.834, 53.4855, -96.7799, 77.5864)
+width = 4.0
+texture = ExtResource("1_qsrsx")
+texture_mode = 1

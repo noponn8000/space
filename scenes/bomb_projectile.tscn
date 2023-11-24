@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://07hvwi2rul2r"]
+
+[ext_resource type="Texture2D" uid="uid://3dkf5pkq6ggk" path="res://assets/bomb.png" id="1_6ian1"]
+[ext_resource type="Script" path="res://scripts/bomb_projectile.gd" id="1_377mo"]
+[ext_resource type="Script" path="res://projectile_attributes.gd" id="2_r5gef"]
+[ext_resource type="Script" path="res://scripts/projectile_trail.gd" id="3_sqmbb"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_4fhh2"]
+
+[sub_resource type="Resource" id="Resource_4hja3"]
+script = ExtResource("2_r5gef")
+speed = 250.0
+piercing = 1
+spread = 0.0
+bounces = 0
+deceleration = 150.0
+linger = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6xg5"]
+size = Vector2(16, 16)
+
+[node name="BombProjectile" type="CharacterBody2D" node_paths=PackedStringArray("visibility_notifier", "hitbox")]
+collision_layer = 8
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_377mo")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+attrs = SubResource("Resource_4hja3")
+hitbox = NodePath("Hitbox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_6ian1")
+
+[node name="ProjectileTrail" type="Line2D" parent="."]
+z_index = -1
+width = 4.0
+default_color = Color(0.992157, 0.788235, 0.788235, 1)
+end_cap_mode = 2
+script = ExtResource("3_sqmbb")
+point_limit = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h6xg5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("4_4fhh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_h6xg5")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_055b0"]
 [ext_resource type="Texture2D" uid="uid://b4iiyi4xtbpx7" path="res://assets/ship.png" id="2_3676p"]
 [ext_resource type="PackedScene" uid="uid://cp8uykjmo0goh" path="res://scenes/cannon_component.tscn" id="3_ss3ao"]
-[ext_resource type="PackedScene" uid="uid://c3t8o1yun5cm2" path="res://scenes/basic_projectile.tscn" id="4_k73e7"]
+[ext_resource type="PackedScene" uid="uid://07hvwi2rul2r" path="res://scenes/bomb_projectile.tscn" id="4_fawij"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_cbb4m"]
 [ext_resource type="PackedScene" uid="uid://cy7smcfujlmr2" path="res://scenes/coin_pickup_manager.tscn" id="6_3b7na"]
 
@@ -43,7 +43,7 @@ process_material = SubResource("ParticleProcessMaterial_b71aq")
 
 [node name="CannonComponent" parent="Pivot" instance=ExtResource("3_ss3ao")]
 position = Vector2(0, -2)
-projectile_scene = ExtResource("4_k73e7")
+projectile_scene = ExtResource("4_fawij")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

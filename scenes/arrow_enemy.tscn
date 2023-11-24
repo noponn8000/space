@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://crgv3nfx34hho"]
+
+[ext_resource type="Script" path="res://scripts/arrow_enemy.gd" id="1_rhjtf"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_f3k04"]
+[ext_resource type="Texture2D" uid="uid://xdqle8s8pv35" path="res://assets/spin_and_thrust_enemy.png" id="5_o1yhe"]
+[ext_resource type="PackedScene" uid="uid://dhb1d80x4rhfn" path="res://scenes/death_particles.tscn" id="6_1mdym"]
+[ext_resource type="Script" path="res://scripts/enemy_drop_manager.gd" id="7_rbdf4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja7qa"]
+size = Vector2(4, 4)
+
+[node name="ArrowEnemy" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_rhjtf")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("5_f3k04")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_ja7qa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ja7qa")
+
+[node name="DeathParticles" parent="." instance=ExtResource("6_1mdym")]
+
+[node name="EnemyDropManager" type="Node2D" parent="."]
+script = ExtResource("7_rbdf4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("5_o1yhe")
+hframes = 2

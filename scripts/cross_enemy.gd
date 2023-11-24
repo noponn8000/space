@@ -52,6 +52,7 @@ func die() -> void:
 	pivot.visible = false;
 	firing = false;
 	collision_shape.set_deferred("disabled", true);
+	hurtbox.set_deferred("monitorable", false);
 	enemy_drop_manager.drop();
 	
 	get_tree().create_timer(1.0).timeout.connect(queue_free);

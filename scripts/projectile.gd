@@ -9,6 +9,7 @@ var direction := Vector2.UP;
 var hit_counter := 0;
 var bounce_counter := 0;
 var speed := attrs.speed;
+var despawn_timer := 0.0;
 
 func _ready() -> void:
 	visibility_notifier.screen_exited.connect(queue_free);
@@ -22,6 +23,14 @@ func _process(delta: float) -> void:
 	velocity = direction * speed * delta;
 	speed = max(0.0, speed - attrs.deceleration * delta);
 	
+	if velocity == Vector2.ZERO:
+		despawn_timer += delta;
+		
+		if despawn_timer > attrs.linger:
+			explode();
+	else:
+		despawn_timer = 0.0;
+	
 	var collision := move_and_collide(velocity);
 	
 	if collision:
@@ -30,9 +39,15 @@ func _process(delta: float) -> void:
 		if bounce_counter <= attrs.bounces:
 			direction = direction.bounce(collision.get_normal());
 		else:
-			queue_free();
+			explode();
 
 func _on_hit_registered(_hurtbox: Hurtbox) -> void:
 	hit_counter += 1;
 	if hit_counter >= attrs.piercing:
-		queue_free();
+		explode();
+
+func explode() -> void:
+	queue_free();
+	
+func pierce() -> void:
+	pass;

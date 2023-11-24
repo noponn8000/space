@@ -6,3 +6,5 @@ extends Resource
 @export var spread := 0.0;
 @export var bounces := 0;
 @export var deceleration := 5.0;
+# How long the projectile exists after stopping
+@export var linger := 2.0;

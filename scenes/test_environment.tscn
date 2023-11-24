@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjxfso27m0tj7"]
+[gd_scene load_steps=18 format=3 uid="uid://cjxfso27m0tj7"]
 
 [ext_resource type="PackedScene" uid="uid://cd6vgbhw31u2t" path="res://scenes/player.tscn" id="1_apumr"]
 [ext_resource type="PackedScene" uid="uid://btl4chxogi321" path="res://scenes/claw_enemy.tscn" id="2_vbg73"]
+[ext_resource type="PackedScene" uid="uid://crgv3nfx34hho" path="res://scenes/arrow_enemy.tscn" id="3_k04gn"]
 [ext_resource type="PackedScene" uid="uid://cmk4oub17jabw" path="res://scenes/cross_enemy.tscn" id="3_r46oy"]
 [ext_resource type="Texture2D" uid="uid://cpkkisife4cly" path="res://assets/tilemappy.png" id="4_tks4c"]
 [ext_resource type="PackedScene" uid="uid://d14m24gm4w8ti" path="res://scenes/breakable.tscn" id="5_d01nd"]
 [ext_resource type="Script" path="res://scripts/pan_camera.gd" id="5_gmwsm"]
 [ext_resource type="Script" path="res://scripts/camera_anchor.gd" id="6_lkbg6"]
-[ext_resource type="PackedScene" uid="uid://6gfjlroimpe2" path="res://scenes/coin.tscn" id="8_6posl"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="7_45fn7"]
 [ext_resource type="PackedScene" uid="uid://d2nv1oifxtb0e" path="res://scenes/hud.tscn" id="9_btjf6"]
+[ext_resource type="Texture2D" uid="uid://quffi08l0fm1" path="res://assets/rail.png" id="10_gkdg7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10b4e"]
 texture = ExtResource("4_tks4c")
@@ -469,6 +471,9 @@ size = Vector2(285, 254)
 position = Vector2(0, -100)
 rotation = 3.14159
 
+[node name="ArrowEnemy" parent="." instance=ExtResource("3_k04gn")]
+position = Vector2(161, -67)
+
 [node name="CrossEnemy" parent="." instance=ExtResource("3_r46oy")]
 position = Vector2(-167, -103)
 
@@ -481,6 +486,7 @@ layer_0/tile_data = PackedInt32Array(-589842, 131073, 1, -655343, 131073, 1, -58
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+script = ExtResource("7_45fn7")
 
 [node name="CameraPanner" type="Node" parent="." node_paths=PackedStringArray("camera", "anchor_node")]
 script = ExtResource("5_gmwsm")
@@ -540,7 +546,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.396078, 0.396078, 0.396078, 1)
 
-[node name="Coin" parent="." instance=ExtResource("8_6posl")]
-position = Vector2(-59, -28)
-
 [node name="HUD" parent="." instance=ExtResource("9_btjf6")]
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(4, 4)
+rotation = -0.608981
+scale = Vector2(4, 4)
+points = PackedVector2Array(12.8755, 7.76025, 25.9992, 16.9128, 16.8467, 30.0365, 9.98232, 39.8792, -55.6362, -5.88331, -39.6193, -28.8498, -17.3431, -32.821, 2.34246, -19.0922, 8.90431, -14.516, 3.18399, -6.31365, 9.74584, -1.7374, 6.31365, 3.18399, 12.8755, 7.76025)
+width = 4.0
+texture = ExtResource("10_gkdg7")
+texture_mode = 1
