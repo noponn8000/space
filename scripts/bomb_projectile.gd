@@ -1,3 +1,4 @@
+class_name BombProjectile;
 extends Projectile
 
 @export var explosion_scene: PackedScene = load("res://scenes/explosion.tscn");

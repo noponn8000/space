@@ -1,7 +1,8 @@
 class_name Player;
 extends CharacterBody2D
 
-@export var movement_speed := 100.0;
+@export var base_movement_speed := 100.0;
+@export var thruster_speed := 200.0;
 @export var acceleration := 5.0;
 @export var deceleration := 5.0;
 
@@ -10,8 +11,10 @@ extends CharacterBody2D
 @onready var pivot := $Pivot;
 @onready var cannon := $Pivot/CannonComponent;
 @onready var hurtbox: Area2D = $Hurtbox
+@onready var thruster: Sprite2D = $Pivot/Thruster
 
 var direction: Vector2;
+var movement_speed := base_movement_speed;
 
 func _ready() -> void:
 	Global.player = self;
@@ -27,8 +30,15 @@ func handle_input() -> void:
 	if direction:
 		pivot.rotation = Vector2.UP.angle_to(direction);
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		cannon.fire();
+		
+	if Input.is_action_pressed("thruster"):
+		thruster.active = true;
+		movement_speed = thruster_speed;
+	else:
+		thruster.active = false;
+		movement_speed = base_movement_speed;
 	
 func _physics_process(delta: float) -> void:
 	handle_input();

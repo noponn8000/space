@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd6vgbhw31u2t"]
+[gd_scene load_steps=11 format=3 uid="uid://cd6vgbhw31u2t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_055b0"]
 [ext_resource type="Texture2D" uid="uid://b4iiyi4xtbpx7" path="res://assets/ship.png" id="2_3676p"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://07hvwi2rul2r" path="res://scenes/bomb_projectile.tscn" id="4_fawij"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_cbb4m"]
 [ext_resource type="PackedScene" uid="uid://cy7smcfujlmr2" path="res://scenes/coin_pickup_manager.tscn" id="6_3b7na"]
+[ext_resource type="PackedScene" uid="uid://bykx2ilkdg3u4" path="res://scenes/thruster.tscn" id="7_u62jf"]
+[ext_resource type="Script" path="res://scripts/item_manager.gd" id="8_f60fn"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b71aq"]
 particle_flag_disable_z = true
@@ -30,6 +32,10 @@ motion_mode = 1
 script = ExtResource("1_055b0")
 
 [node name="Pivot" type="Node2D" parent="."]
+
+[node name="Thruster" parent="Pivot" instance=ExtResource("7_u62jf")]
+visible = false
+position = Vector2(0, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("2_3676p")
@@ -65,3 +71,6 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_vepvi")
 metadata/_edit_lock_ = true
+
+[node name="ItemManager" type="Node" parent="."]
+script = ExtResource("8_f60fn")

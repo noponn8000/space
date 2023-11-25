@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2nv1oifxtb0e"]
+[gd_scene load_steps=11 format=3 uid="uid://d2nv1oifxtb0e"]
 
 [ext_resource type="FontFile" uid="uid://bujekr4x3n8i2" path="res://assets/fonts/Mystery_Font2.ttf" id="1_6ae6i"]
 [ext_resource type="Texture2D" uid="uid://b3q7swn555klq" path="res://assets/coin.png" id="1_qjpdl"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_qkp7p"]
+[ext_resource type="PackedScene" uid="uid://brb0gamtebsyq" path="res://scenes/thruster_bar.tscn" id="4_lakm3"]
+[ext_resource type="PackedScene" uid="uid://bal0jpfxfjdmw" path="res://scenes/item_holder.tscn" id="5_xnphm"]
+[ext_resource type="Texture2D" uid="uid://b4ejiqrsgyyv0" path="res://assets/control_panel.png" id="6_pdw40"]
 
 [sub_resource type="FontVariation" id="FontVariation_6mddb"]
 base_font = ExtResource("1_6ae6i")
@@ -11,14 +14,22 @@ spacing_space = 8
 [sub_resource type="LabelSettings" id="LabelSettings_kw0nf"]
 font = SubResource("FontVariation_6mddb")
 
+[sub_resource type="FontVariation" id="FontVariation_grhp6"]
+base_font = ExtResource("1_6ae6i")
+spacing_space = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_x1daq"]
+font = SubResource("FontVariation_grhp6")
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qkp7p")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -1.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 39.0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
@@ -38,4 +49,59 @@ offset_bottom = 16.0
 scale = Vector2(2, 2)
 text = "0"
 label_settings = SubResource("LabelSettings_kw0nf")
-metadata/_edit_use_anchors_ = true
+
+[node name="ControlPanel" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 140.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(12, 12)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_pdw40")
+
+[node name="ThrusterBar" parent="." instance=ExtResource("4_lakm3")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 1093.0
+offset_top = -97.0
+offset_right = 1093.0
+offset_bottom = -97.0
+grow_horizontal = 1
+grow_vertical = 0
+scale = Vector2(12, 12)
+max_value = 5.0
+current_value = 5.0
+
+[node name="ItemHolder" parent="." instance=ExtResource("5_xnphm")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -67.0
+offset_top = -115.0
+offset_right = -59.0
+offset_bottom = -107.0
+grow_vertical = 0
+scale = Vector2(12, 12)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="QuantityLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = 682.0
+offset_top = 976.0
+offset_right = 722.0
+offset_bottom = 999.0
+scale = Vector2(4, 4)
+text = "1"
+label_settings = SubResource("LabelSettings_x1daq")

@@ -16,4 +16,4 @@ func explode() -> void:
 	var tween = get_tree().create_tween();
 	tween.tween_property(collision_shape, "scale", Vector2.ONE * size, expansion_time).set_trans(Tween.TRANS_CUBIC);
 	
-	get_tree().create_timer(2.0).timeout.connect(queue_free);
+	get_tree().create_timer(0.5).timeout.connect(queue_free);

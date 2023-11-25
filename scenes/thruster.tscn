@@ -1,21 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bykx2ilkdg3u4"]
+[gd_scene load_steps=7 format=3 uid="uid://bykx2ilkdg3u4"]
 
 [ext_resource type="Texture2D" uid="uid://bcpn7bo8h5mx" path="res://assets/big_thrust.png" id="1_mahk7"]
-
-[sub_resource type="Animation" id="Animation_xwrcc"]
-resource_name = "ramp_up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[ext_resource type="Script" path="res://scripts/thruster.gd" id="2_iogp4"]
 
 [sub_resource type="Animation" id="Animation_w7tr7"]
 length = 0.001
@@ -32,17 +18,53 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_xwrcc"]
+resource_name = "ramp_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_4rl17"]
+resource_name = "flicker"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nd6rq"]
 _data = {
 "RESET": SubResource("Animation_w7tr7"),
+"flicker": SubResource("Animation_4rl17"),
 "ramp_up": SubResource("Animation_xwrcc")
 }
 
 [node name="Thruster" type="Sprite2D"]
 texture = ExtResource("1_mahk7")
 hframes = 7
+script = ExtResource("2_iogp4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_nd6rq")
 }

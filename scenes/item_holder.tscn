@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bal0jpfxfjdmw"]
+
+[ext_resource type="Script" path="res://scripts/item_holder.gd" id="1_k1lkg"]
+[ext_resource type="Texture2D" uid="uid://bshfj0m2uch1r" path="res://assets/item_storer.png" id="2_6yxdi"]
+
+[node name="ItemHolder" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = -1912.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k1lkg")
+
+[node name="ItemFrame" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+texture = ExtResource("2_6yxdi")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
