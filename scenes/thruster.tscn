@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bykx2ilkdg3u4"]
+[gd_scene load_steps=8 format=3 uid="uid://bykx2ilkdg3u4"]
 
 [ext_resource type="Texture2D" uid="uid://bcpn7bo8h5mx" path="res://assets/big_thrust.png" id="1_mahk7"]
 [ext_resource type="Script" path="res://scripts/thruster.gd" id="2_iogp4"]
+[ext_resource type="AudioStream" uid="uid://iyoacsmw5sa0" path="res://assets/sfx/Audio/thrusterFire_000.ogg" id="3_qfbv8"]
 
 [sub_resource type="Animation" id="Animation_w7tr7"]
 length = 0.001
@@ -16,22 +17,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_xwrcc"]
-resource_name = "ramp_up"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_4rl17"]
@@ -51,6 +36,22 @@ tracks/0/keys = {
 "values": [3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_xwrcc"]
+resource_name = "ramp_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nd6rq"]
 _data = {
 "RESET": SubResource("Animation_w7tr7"),
@@ -59,6 +60,7 @@ _data = {
 }
 
 [node name="Thruster" type="Sprite2D"]
+modulate = Color(2, 2, 2, 1)
 texture = ExtResource("1_mahk7")
 hframes = 7
 script = ExtResource("2_iogp4")
@@ -68,3 +70,7 @@ speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_nd6rq")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qfbv8")
+volume_db = -10.0

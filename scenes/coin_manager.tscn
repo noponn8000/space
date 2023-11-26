@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://f5wmyqryd68m"]
+
+[ext_resource type="Script" path="res://scripts/coin_manager.gd" id="1_bfs7k"]
+[ext_resource type="Texture2D" uid="uid://b3q7swn555klq" path="res://assets/coin.png" id="2_cbmiy"]
+[ext_resource type="FontFile" uid="uid://bujekr4x3n8i2" path="res://assets/fonts/Mystery_Font2.ttf" id="3_migm2"]
+
+[sub_resource type="FontVariation" id="FontVariation_6mddb"]
+base_font = ExtResource("3_migm2")
+spacing_space = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_kw0nf"]
+font = SubResource("FontVariation_6mddb")
+
+[sub_resource type="Animation" id="Animation_1e17r"]
+resource_name = "shake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.5, 1.5), Vector2(2.25, 2.25), Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_igpea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucaou"]
+_data = {
+"RESET": SubResource("Animation_igpea"),
+"shake": SubResource("Animation_1e17r")
+}
+
+[node name="CoinManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 44.0
+script = ExtResource("1_bfs7k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_cbmiy")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+anchor_left = 0.35
+anchor_right = 0.35
+anchor_bottom = 0.075
+offset_left = 19.0
+offset_right = 35.0
+offset_bottom = 16.0
+scale = Vector2(2, 2)
+text = "0"
+label_settings = SubResource("LabelSettings_kw0nf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ucaou")
+}

@@ -4,15 +4,10 @@ extends Control
 
 @export var quantity_label: Label;
 
-var item_dict := {
-	ItemType.BouncyProjectile: preload("res://assets/bounce_bullet.png"),
-	ItemType.Bomb: preload("res://assets/bomb.png")
-}
-
-func set_item(item: int, quantity: int) -> void:
-	item_sprite.texture = item_dict[item];
+func set_item(item: ItemType.Type, quantity: int) -> void:
+	item_sprite.texture = Global.item_sprites[item];
 	
 	if quantity == -1:
-		quantity_label.text = "";
+		quantity_label.text = "-";
 	else:
 		quantity_label.text = str(quantity);

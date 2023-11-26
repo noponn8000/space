@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cux6qa1eqttjr"]
+[gd_scene load_steps=7 format=3 uid="uid://cux6qa1eqttjr"]
 
 [ext_resource type="Script" path="res://scripts/basic_projectile.gd" id="1_pyim1"]
 [ext_resource type="Script" path="res://scripts/projectile_attributes.gd" id="2_2qted"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="2_d5r11"]
+[ext_resource type="AudioStream" uid="uid://pa6lqsg72b7k" path="res://assets/sfx/laser9.mp3" id="3_jd2co"]
 
 [sub_resource type="Resource" id="Resource_31tui"]
 script = ExtResource("2_2qted")
@@ -11,6 +12,9 @@ piercing = 1
 spread = 0.0
 bounces = 0
 deceleration = 5.0
+linger = 2.0
+cooldown = 0.25
+shoot_sfx = ExtResource("3_jd2co")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6xg5"]
 size = Vector2(2, 2)

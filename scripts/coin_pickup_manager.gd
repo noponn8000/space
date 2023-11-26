@@ -12,5 +12,5 @@ func _on_area_entered(other: Area2D) -> void:
 	if coin:
 		coin.pick_up();
 		
-		Global.add_coin();
+		Global.coin_manager.add_coin();
 		coin_collected.emit();

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://botmrvulw25mk"]
+[gd_scene load_steps=7 format=3 uid="uid://botmrvulw25mk"]
 
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_e5c3s"]
+[ext_resource type="AudioStream" uid="uid://bvt2r3upe0hd5" path="res://assets/sfx/Audio/explosionCrunch_000.ogg" id="2_bqh8d"]
 
 [sub_resource type="Gradient" id="Gradient_jm8w6"]
-colors = PackedColorArray(0.88, 0.088, 0, 1, 1, 0.760784, 0, 0)
+offsets = PackedFloat32Array(0, 0.546512, 0.998339)
+colors = PackedColorArray(5, 0, 0, 1, 7.87, 0.79, 0.39, 1, 0.1, 0.1, 0.1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2q24c"]
 gradient = SubResource("Gradient_jm8w6")
@@ -47,3 +49,6 @@ trail_lifetime = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ohqh3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_bqh8d")

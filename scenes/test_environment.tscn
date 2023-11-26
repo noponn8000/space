@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjxfso27m0tj7"]
+[gd_scene load_steps=20 format=3 uid="uid://cjxfso27m0tj7"]
 
 [ext_resource type="PackedScene" uid="uid://cd6vgbhw31u2t" path="res://scenes/player.tscn" id="1_apumr"]
 [ext_resource type="PackedScene" uid="uid://btl4chxogi321" path="res://scenes/claw_enemy.tscn" id="2_vbg73"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="7_45fn7"]
 [ext_resource type="PackedScene" uid="uid://d2nv1oifxtb0e" path="res://scenes/hud.tscn" id="9_btjf6"]
 [ext_resource type="Texture2D" uid="uid://quffi08l0fm1" path="res://assets/rail.png" id="10_gkdg7"]
+[ext_resource type="PackedScene" uid="uid://mw1bokcp3q47" path="res://scenes/shop.tscn" id="12_m8q2r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10b4e"]
 texture = ExtResource("4_tks4c")
@@ -499,6 +500,17 @@ size = Vector2(513, 256)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lvew"]
 size = Vector2(285, 254)
 
+[sub_resource type="Environment" id="Environment_xbhx0"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.5
+glow_bloom = 0.2
+glow_blend_mode = 0
+adjustment_enabled = true
+adjustment_contrast = 1.2
+
 [node name="TestEnvironment" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_apumr")]
@@ -514,6 +526,7 @@ position = Vector2(161, -67)
 position = Vector2(-167, -103)
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = 2
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_oa1dr")
 cell_quadrant_size = 4
@@ -568,7 +581,7 @@ position = Vector2(-0.5, 28)
 shape = SubResource("RectangleShape2D_7lvew")
 
 [node name="ColorRect" type="ColorRect" parent="CameraPanner/Anchors/CameraAnchor3"]
-z_index = -1
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -595,3 +608,9 @@ points = PackedVector2Array(12.8755, 7.76025, 25.9992, 16.9128, 16.8467, 30.0365
 width = 4.0
 texture = ExtResource("10_gkdg7")
 texture_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xbhx0")
+
+[node name="Shop" parent="." instance=ExtResource("12_m8q2r")]
+position = Vector2(0, -416)

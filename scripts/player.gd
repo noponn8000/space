@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var cannon := $Pivot/CannonComponent;
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var thruster: Sprite2D = $Pivot/Thruster
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var direction: Vector2;
 var movement_speed := base_movement_speed;
@@ -49,7 +50,14 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration);
 		
 	update_sprite();
+	update_sound();
 	move_and_slide();
+	
+func update_sound() -> void:
+	if direction != Vector2.ZERO and !audio_stream_player_2d.playing:
+		audio_stream_player_2d.play();
+	elif direction == Vector2.ZERO and audio_stream_player_2d.playing:
+		audio_stream_player_2d.stop();
 
 func update_sprite() -> void:
 	if velocity != Vector2.ZERO:

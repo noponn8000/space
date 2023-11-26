@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://mw1bokcp3q47"]
+
+[ext_resource type="Texture2D" uid="uid://cxraf6sttilms" path="res://assets/shopman.png" id="2_afwus"]
+[ext_resource type="PackedScene" uid="uid://dgw1r0f3dii5v" path="res://scenes/sellable_item.tscn" id="3_yllwu"]
+
+[node name="Shop" type="Node2D"]
+scale = Vector2(4, 4)
+
+[node name="Shopman" type="Sprite2D" parent="."]
+texture = ExtResource("2_afwus")
+
+[node name="SellableItem" parent="." instance=ExtResource("3_yllwu")]
+position = Vector2(-16, 16)
+price = 10
+item = 2
+quantity = 5

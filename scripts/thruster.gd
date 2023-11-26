@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var decharge_speed := 1.0;
 @export var recharge_speed := 2.0;
@@ -35,8 +36,12 @@ func _set_active(is_active: bool) -> void:
 func _process(delta: float) -> void:
 	if active:
 		charge = max(0.0, charge - (delta * decharge_speed));
+		if !audio_stream_player_2d.playing:
+			audio_stream_player_2d.play();
 	else:
 		charge = min(max_charge, charge + (delta * recharge_speed));
+		if audio_stream_player_2d.playing:
+			audio_stream_player_2d.stop();
 		
 	if is_zero_approx(charge):
 		active = false;

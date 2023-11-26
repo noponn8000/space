@@ -1,3 +1,3 @@
 class_name ItemType;
 
-enum {BasicProjectile, BouncyProjectile, Bomb };
+enum Type { BasicProjectile, BouncyProjectile, Bomb };

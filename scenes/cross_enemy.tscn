@@ -26,20 +26,32 @@ position = Vector2(-2, -2)
 rotation = -0.785398
 projectile_scene = ExtResource("3_4s0o6")
 
+[node name="AudioStreamPlayer2D" parent="Pivot/Cannons/CannonComponent" index="0"]
+volume_db = -30.0
+
 [node name="CannonComponent2" parent="Pivot/Cannons" instance=ExtResource("1_e45g5")]
 position = Vector2(2, -2)
 rotation = 0.785398
 projectile_scene = ExtResource("3_4s0o6")
+
+[node name="AudioStreamPlayer2D" parent="Pivot/Cannons/CannonComponent2" index="0"]
+volume_db = -30.0
 
 [node name="CannonComponent3" parent="Pivot/Cannons" instance=ExtResource("1_e45g5")]
 position = Vector2(2, 2)
 rotation = 2.35619
 projectile_scene = ExtResource("3_4s0o6")
 
+[node name="AudioStreamPlayer2D" parent="Pivot/Cannons/CannonComponent3" index="0"]
+volume_db = -30.0
+
 [node name="CannonComponent4" parent="Pivot/Cannons" instance=ExtResource("1_e45g5")]
 position = Vector2(-2, 2)
 rotation = 3.92699
 projectile_scene = ExtResource("3_4s0o6")
+
+[node name="AudioStreamPlayer2D" parent="Pivot/Cannons/CannonComponent4" index="0"]
+volume_db = -30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("3_d40lw")
@@ -59,3 +71,10 @@ shape = SubResource("RectangleShape2D_ja7qa")
 
 [node name="EnemyDropManager" type="Node2D" parent="."]
 script = ExtResource("7_uqw7o")
+drop_min = 10
+drop_max = 25
+
+[editable path="Pivot/Cannons/CannonComponent"]
+[editable path="Pivot/Cannons/CannonComponent2"]
+[editable path="Pivot/Cannons/CannonComponent3"]
+[editable path="Pivot/Cannons/CannonComponent4"]
