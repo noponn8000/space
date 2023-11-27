@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://2p2wuclq6pr1"]
+
+[ext_resource type="PackedScene" uid="uid://b0280tfh47y1c" path="res://scenes/path_enemy.tscn" id="1_pfuky"]
+[ext_resource type="Script" path="res://scripts/buzz_saw.gd" id="2_0sclu"]
+[ext_resource type="Texture2D" uid="uid://b7tleq3v5qj8t" path="res://assets/big_saw_environment.png" id="2_xk70f"]
+
+[node name="BuzzSaw" instance=ExtResource("1_pfuky")]
+rotates = false
+loop = false
+script = ExtResource("2_0sclu")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_xk70f")

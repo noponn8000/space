@@ -7,10 +7,9 @@
 scale = Vector2(4, 4)
 
 [node name="Shopman" type="Sprite2D" parent="."]
+visibility_layer = 2
 texture = ExtResource("2_afwus")
 
 [node name="SellableItem" parent="." instance=ExtResource("3_yllwu")]
 position = Vector2(-16, 16)
-price = 10
 item = 2
-quantity = 5

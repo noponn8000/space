@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://6gfjlroimpe2"]
+[gd_scene load_steps=7 format=3 uid="uid://6gfjlroimpe2"]
 
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1_4ndse"]
+[ext_resource type="AudioStream" uid="uid://8f671k31euvk" path="res://assets/sfx/powerUp2.mp3" id="2_iwl5b"]
 
 [sub_resource type="Animation" id="Animation_bqse2"]
 length = 0.001
@@ -57,3 +58,7 @@ polygon = PackedVector2Array(-1, -1, 1, -1, 1, -0.00817204, 1, 1, -1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fjs8u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_iwl5b")
+volume_db = -20.0

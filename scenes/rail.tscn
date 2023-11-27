@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqu2qwkqjutc6"]
+
+[ext_resource type="Script" path="res://scripts/rail.gd" id="1_qbtgj"]
+[ext_resource type="PackedScene" uid="uid://bdug17a2rxj37" path="res://scenes/line_2d.tscn" id="2_0gk2k"]
+
+[sub_resource type="Curve2D" id="Curve2D_4nx4h"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 144, 74, 0, 0, 0, 0, 144, 56, 0, 0, 0, 0, 192, 56, 0, 0, 0, 0, 192, 0)
+}
+point_count = 4
+
+[node name="Rail" type="Path2D"]
+visibility_layer = 2
+curve = SubResource("Curve2D_4nx4h")
+script = ExtResource("1_qbtgj")
+
+[node name="Line2D" parent="." instance=ExtResource("2_0gk2k")]
+position = Vector2(0, 0)
+rotation = 0.0
+points = PackedVector2Array()

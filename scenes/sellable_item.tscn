@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgw1r0f3dii5v"]
+[gd_scene load_steps=9 format=3 uid="uid://dgw1r0f3dii5v"]
 
 [ext_resource type="Script" path="res://scripts/sellable_item.gd" id="1_xsimr"]
 [ext_resource type="FontFile" uid="uid://bujekr4x3n8i2" path="res://assets/fonts/Mystery_Font2.ttf" id="2_4tx1b"]
 [ext_resource type="Texture2D" uid="uid://3dkf5pkq6ggk" path="res://assets/bomb.png" id="2_vqi2j"]
+[ext_resource type="Texture2D" uid="uid://b3q7swn555klq" path="res://assets/coin.png" id="4_wy2sr"]
+[ext_resource type="AudioStream" uid="uid://n5nlhodrdyn7" path="res://assets/sfx/powerUp8.mp3" id="5_0outb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwso"]
 
@@ -31,3 +33,22 @@ offset_bottom = 27.0
 scale = Vector2(0.25, 0.25)
 text = "1"
 label_settings = SubResource("LabelSettings_g0ub0")
+
+[node name="PriceLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 21.0
+scale = Vector2(0.1, 0.1)
+text = "10
+"
+label_settings = SubResource("LabelSettings_g0ub0")
+
+[node name="CoinSprite" type="Sprite2D" parent="PriceLabel"]
+position = Vector2(-10, 8)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_wy2sr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0outb")

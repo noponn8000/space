@@ -32,8 +32,13 @@ func _physics_process(delta: float) -> void:
 		velocity = transform.x * movement_speed;
 		
 	var collision := move_and_collide(velocity * delta);
-	if collision:
+	if collision and not collision.get_collider() is RigidBody2D:
 		transform.x = -transform.x
+		
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * 40.0)
 
 func _on_hit_registered(hitbox: Hitbox) -> void:
 	die();

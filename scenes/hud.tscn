@@ -15,6 +15,7 @@ spacing_space = 8
 font = SubResource("FontVariation_q70fe")
 
 [node name="HUD" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_qkp7p")
 
 [node name="ControlPanel" type="TextureRect" parent="."]
@@ -68,9 +69,18 @@ quantity_label = NodePath("../QuantityLabel")
 [node name="QuantityLabel" type="Label" parent="."]
 texture_filter = 1
 offset_left = 659.0
-offset_top = 983.0
+offset_top = 993.0
 offset_right = 699.0
-offset_bottom = 1006.0
+offset_bottom = 1016.0
 scale = Vector2(3, 3)
-text = "1"
+text = "∞"
+label_settings = SubResource("LabelSettings_x1daq")
+
+[node name="InfoLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = 78.0
+offset_top = 1045.0
+offset_right = 118.0
+offset_bottom = 1068.0
+scale = Vector2(1.5, 1.5)
 label_settings = SubResource("LabelSettings_x1daq")

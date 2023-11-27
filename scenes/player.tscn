@@ -31,6 +31,11 @@ scale = Vector2(4, 4)
 collision_mask = 70
 motion_mode = 1
 script = ExtResource("1_055b0")
+base_movement_speed = null
+thruster_speed = null
+acceleration = null
+deceleration = null
+push_force = null
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -79,6 +84,8 @@ script = ExtResource("8_f60fn")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_l44ww")
 volume_db = -20.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="fired" from="Pivot/CannonComponent" to="ItemManager" method="_on_item_used"]
 [connection signal="item_changed" from="ItemManager" to="Pivot/CannonComponent" method="_item_changed"]
