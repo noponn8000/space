@@ -1,20 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3t8o1yun5cm2"]
+[gd_scene load_steps=6 format=3 uid="uid://d4jkg0ssolfnb"]
 
-[ext_resource type="Script" path="res://scripts/basic_projectile.gd" id="1_y6x7u"]
-[ext_resource type="Script" path="res://scripts/projectile_attributes.gd" id="2_gi0fe"]
-[ext_resource type="Script" path="res://scripts/projectile_trail.gd" id="2_jixxe"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_fvcav"]
-
-[sub_resource type="Resource" id="Resource_tt8x3"]
-script = ExtResource("2_gi0fe")
-speed = 250.0
-piercing = 1
-spread = 0.0
-bounces = 0
-deceleration = 5.0
-linger = 2.0
-cooldown = 0.25
-push_force = 120.0
+[ext_resource type="Script" path="res://scripts/split_projectile.gd" id="1_53pn1"]
+[ext_resource type="PackedScene" uid="uid://c3t8o1yun5cm2" path="res://scenes/basic_projectile.tscn" id="2_xcnnv"]
+[ext_resource type="Script" path="res://scripts/projectile_trail.gd" id="3_wkc3i"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_thinb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6xg5"]
 size = Vector2(2, 2)
@@ -22,9 +11,9 @@ size = Vector2(2, 2)
 [node name="BasicProjectile" type="CharacterBody2D" node_paths=PackedStringArray("visibility_notifier", "hitbox")]
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_y6x7u")
+script = ExtResource("1_53pn1")
+shatter_projectile_scene = ExtResource("2_xcnnv")
 visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
-attrs = SubResource("Resource_tt8x3")
 hitbox = NodePath("Hitbox")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -39,13 +28,13 @@ shape = SubResource("RectangleShape2D_h6xg5")
 [node name="ProjectileTrail" type="Line2D" parent="."]
 width = 1.0
 default_color = Color(0.0392157, 0.478431, 0.392157, 1)
-script = ExtResource("2_jixxe")
+script = ExtResource("3_wkc3i")
 point_limit = 5
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 6
-script = ExtResource("3_fvcav")
+script = ExtResource("4_thinb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_h6xg5")

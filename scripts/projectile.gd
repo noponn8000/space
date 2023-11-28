@@ -32,8 +32,11 @@ func _process(delta: float) -> void:
 		despawn_timer = 0.0;
 	
 	var collision := move_and_collide(velocity);
-	
+
 	if collision:
+		if collision.get_collider() is RigidBody2D:
+			collision.get_collider().apply_central_impulse(-collision.get_normal() * attrs.push_force);
+			
 		bounce_counter += 1;
 		
 		if bounce_counter <= attrs.bounces:

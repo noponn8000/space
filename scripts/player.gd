@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force);
 
 func update_sound() -> void:
 	if direction != Vector2.ZERO and !audio_stream_player_2d.playing:

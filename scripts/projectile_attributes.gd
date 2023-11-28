@@ -11,3 +11,4 @@ extends Resource
 @export var cooldown := 0.25;
 @export var shoot_sfx: AudioStreamMP3 = load("res://assets/sfx/laser1.mp3");
 @export var explode_sfx: AudioStreamOggVorbis = load("res://assets/sfx/Audio/explosionCrunch_000.ogg")
+@export var push_force := 120.0;

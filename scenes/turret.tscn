@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://co6801vjhrobb"]
+
+[ext_resource type="Script" path="res://scripts/turret.gd" id="1_ndb5e"]
+[ext_resource type="Texture2D" uid="uid://dnmwa5rawhkk2" path="res://assets/turret_big.png" id="1_rurhf"]
+[ext_resource type="PackedScene" uid="uid://cp8uykjmo0goh" path="res://scenes/cannon_component.tscn" id="3_cwu4e"]
+[ext_resource type="PackedScene" uid="uid://cux6qa1eqttjr" path="res://scenes/enemy_projectile.tscn" id="4_gg6ed"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6k6u2"]
+radius = 4.0
+
+[node name="Turret" type="StaticBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_ndb5e")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+position = Vector2(1.01083, -0.0109489)
+rotation = 1.5708
+texture = ExtResource("1_rurhf")
+
+[node name="Cannons" type="Node2D" parent="Pivot"]
+rotation = 1.5708
+
+[node name="CannonComponent" parent="Pivot/Cannons" instance=ExtResource("3_cwu4e")]
+position = Vector2(-3, -5)
+projectile_scene = ExtResource("4_gg6ed")
+
+[node name="CannonComponent2" parent="Pivot/Cannons" instance=ExtResource("3_cwu4e")]
+position = Vector2(3, -5)
+projectile_scene = ExtResource("4_gg6ed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6k6u2")

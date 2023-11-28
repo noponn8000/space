@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cd6vgbhw31u2t"]
+[gd_scene load_steps=13 format=3 uid="uid://cd6vgbhw31u2t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_055b0"]
 [ext_resource type="Texture2D" uid="uid://b4iiyi4xtbpx7" path="res://assets/ship.png" id="2_3676p"]
@@ -23,6 +23,9 @@ scale_min = 4.0
 scale_max = 4.0
 color = Color(0.960784, 0.741176, 0.337255, 0.541176)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ikxl"]
+radius = 2.5
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vepvi"]
 size = Vector2(4, 3)
 
@@ -31,11 +34,6 @@ scale = Vector2(4, 4)
 collision_mask = 70
 motion_mode = 1
 script = ExtResource("1_055b0")
-base_movement_speed = null
-thruster_speed = null
-acceleration = null
-deceleration = null
-push_force = null
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -53,13 +51,13 @@ emitting = false
 amount = 2
 process_material = SubResource("ParticleProcessMaterial_b71aq")
 
-[node name="CannonComponent" parent="Pivot" instance=ExtResource("3_ss3ao")]
+[node name="CannonComponent" parent="Pivot" groups=["player"] instance=ExtResource("3_ss3ao")]
 position = Vector2(0, -2)
 projectile_scene = ExtResource("5_5s0pk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_vepvi")
+shape = SubResource("CircleShape2D_7ikxl")
 metadata/_edit_lock_ = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
