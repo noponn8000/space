@@ -15,7 +15,7 @@ func _ready() -> void:
 	price_label.text = str(price);
 	
 func interact() -> void:
-	if Global.coin_manager.coin_count > price and quantity >= 0:
+	if Global.coin_manager.coin_count >= price and quantity >= 0:
 		Global.item_manager.change_item_quantity(item, 1);
 		Global.coin_manager.change_coin_count(-price);
 		

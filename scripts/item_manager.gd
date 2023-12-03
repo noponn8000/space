@@ -51,14 +51,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		item_index = item_index - 1 if item_index >= 1 else len(item_quantities) - 1;
 		current_item = item_quantities.keys()[item_index];
-		
-		print(current_item);
+
 		item_changed.emit(current_item);
 	elif Input.is_action_just_pressed("item_forward"):
 		var item_index = item_quantities.keys().find(current_item);
 		
 		item_index = item_index + 1 if item_index < len(item_quantities) - 1 else 0;
 		current_item = item_quantities.keys()[item_index];
-		
-		print(current_item);
+
 		item_changed.emit(current_item);

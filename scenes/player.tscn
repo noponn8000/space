@@ -1,24 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://cd6vgbhw31u2t"]
+[gd_scene load_steps=14 format=3 uid="uid://cd6vgbhw31u2t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_055b0"]
 [ext_resource type="Texture2D" uid="uid://b4iiyi4xtbpx7" path="res://assets/ship.png" id="2_3676p"]
 [ext_resource type="PackedScene" uid="uid://cp8uykjmo0goh" path="res://scenes/cannon_component.tscn" id="3_ss3ao"]
-[ext_resource type="PackedScene" uid="uid://c3t8o1yun5cm2" path="res://scenes/basic_projectile.tscn" id="5_5s0pk"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="5_cbb4m"]
+[ext_resource type="PackedScene" uid="uid://c3t8o1yun5cm2" path="res://scenes/basic_projectile.tscn" id="5_iw1kk"]
 [ext_resource type="PackedScene" uid="uid://cy7smcfujlmr2" path="res://scenes/coin_pickup_manager.tscn" id="6_3b7na"]
 [ext_resource type="PackedScene" uid="uid://bykx2ilkdg3u4" path="res://scenes/thruster.tscn" id="7_u62jf"]
 [ext_resource type="Script" path="res://scripts/item_manager.gd" id="8_f60fn"]
 [ext_resource type="AudioStream" uid="uid://c8pv54s5s4fh8" path="res://assets/sfx/Audio/spaceEngineLow_000.ogg" id="9_l44ww"]
+[ext_resource type="Script" path="res://scripts/hp_manager.gd" id="10_5tk5t"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b71aq"]
 particle_flag_disable_z = true
 direction = Vector3(0, 1, 0)
 spread = 10.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 5.0
 initial_velocity_max = 5.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 scale_min = 4.0
 scale_max = 4.0
 color = Color(0.960784, 0.741176, 0.337255, 0.541176)
@@ -31,7 +30,7 @@ size = Vector2(4, 3)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(4, 4)
-collision_mask = 70
+collision_mask = 66
 motion_mode = 1
 script = ExtResource("1_055b0")
 
@@ -42,6 +41,7 @@ visible = false
 position = Vector2(0, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+position = Vector2(0, 0.25)
 texture = ExtResource("2_3676p")
 hframes = 2
 
@@ -53,10 +53,9 @@ process_material = SubResource("ParticleProcessMaterial_b71aq")
 
 [node name="CannonComponent" parent="Pivot" groups=["player"] instance=ExtResource("3_ss3ao")]
 position = Vector2(0, -2)
-projectile_scene = ExtResource("5_5s0pk")
+projectile_scene = ExtResource("5_iw1kk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
 shape = SubResource("CircleShape2D_7ikxl")
 metadata/_edit_lock_ = true
 
@@ -84,6 +83,9 @@ stream = ExtResource("9_l44ww")
 volume_db = -20.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HealthManager" type="Node" parent="."]
+script = ExtResource("10_5tk5t")
 
 [connection signal="fired" from="Pivot/CannonComponent" to="ItemManager" method="_on_item_used"]
 [connection signal="item_changed" from="ItemManager" to="Pivot/CannonComponent" method="_item_changed"]

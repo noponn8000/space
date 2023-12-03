@@ -15,14 +15,19 @@ extends CharacterBody2D
 @onready var thruster: Sprite2D = $Pivot/Thruster
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D;
 @onready var visibility_notifier := $VisibleOnScreenNotifier2D;
+@onready var health_manager := $HealthManager;
 
 var direction: Vector2;
 var movement_speed := base_movement_speed;
 
 func _ready() -> void:
 	Global.player = self;
+	Global.player_hp = health_manager;
 	
 	hurtbox.hit_registered.connect(on_hit_registered);
+	health_manager.health_depleted.connect(
+		get_tree().reload_current_scene
+	);
 	
 func handle_input() -> void:
 	direction = Vector2(
@@ -75,4 +80,4 @@ func update_sprite() -> void:
 		sprite.frame = 0;
 
 func on_hit_registered(hitbox: Hitbox) -> void:
-	print("Player was hit!");
+	health_manager.change_hp(-1);

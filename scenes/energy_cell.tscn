@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx44t7rhscfg4"]
+
+[ext_resource type="Texture2D" uid="uid://q4futjp4lyty" path="res://assets/energy_cell.png" id="1_x3d30"]
+[ext_resource type="Script" path="res://scripts/energy_cell.gd" id="2_bnm1s"]
+[ext_resource type="Script" path="res://scripts/flash_component.gd" id="3_opma0"]
+
+[sub_resource type="Gradient" id="Gradient_ny4px"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a5spj"]
+gradient = SubResource("Gradient_ny4px")
+
+[node name="EnergyCell" type="Sprite2D"]
+scale = Vector2(12, 12)
+texture = ExtResource("1_x3d30")
+hframes = 9
+frame = 7
+script = ExtResource("2_bnm1s")
+
+[node name="FlashComponent" type="Node" parent="."]
+script = ExtResource("3_opma0")
+color_gradient = SubResource("GradientTexture1D_a5spj")

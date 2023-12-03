@@ -15,6 +15,8 @@ deceleration = 5.0
 linger = 2.0
 cooldown = 0.25
 push_force = 120.0
+homing_strength = 100.0
+homing_range = 300.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6xg5"]
 size = Vector2(2, 2)

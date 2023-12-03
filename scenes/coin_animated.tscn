@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://js124opedehs"]
+
+[ext_resource type="Texture2D" uid="uid://3hccq3jlux4q" path="res://assets/coin-sheet.png" id="1_wslmd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghuoa"]
+atlas = ExtResource("1_wslmd")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pahs6"]
+atlas = ExtResource("1_wslmd")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57d8l"]
+atlas = ExtResource("1_wslmd")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lewq"]
+atlas = ExtResource("1_wslmd")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq5sr"]
+atlas = ExtResource("1_wslmd")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dutm6"]
+atlas = ExtResource("1_wslmd")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnk85"]
+atlas = ExtResource("1_wslmd")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bclyr"]
+atlas = ExtResource("1_wslmd")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ljk1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghuoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pahs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57d8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lewq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq5sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dutm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnk85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bclyr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="CoinAnimated" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2ljk1")
+frame_progress = 0.00423357

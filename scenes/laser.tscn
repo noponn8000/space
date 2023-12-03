@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://cynihy41axnci"]
+
+[ext_resource type="Texture2D" uid="uid://betwq6p2qfbp7" path="res://assets/laser1.png" id="1_mi0e7"]
+[ext_resource type="Texture2D" uid="uid://cqknbs6lpalp2" path="res://assets/laser2.png" id="2_mdjgf"]
+[ext_resource type="Texture2D" uid="uid://bewgssoouflky" path="res://assets/laser3.png" id="3_fqchi"]
+[ext_resource type="Texture2D" uid="uid://7wx0ci4bqst" path="res://assets/laser4.png" id="4_p5wqs"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_pyerh"]
+[ext_resource type="Script" path="res://scripts/laser.gd" id="5_tln6v"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_i8nwf"]
+frames = 4
+speed_scale = 2.0
+frame_0/texture = ExtResource("1_mi0e7")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("2_mdjgf")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("3_fqchi")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("4_p5wqs")
+frame_3/duration = 0.25
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5kbv6"]
+
+[node name="Laser" type="Line2D"]
+texture_repeat = 2
+texture = SubResource("AnimatedTexture_i8nwf")
+texture_mode = 1
+script = ExtResource("5_tln6v")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("5_pyerh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("SegmentShape2D_5kbv6")

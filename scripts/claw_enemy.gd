@@ -51,5 +51,6 @@ func die() -> void:
 	hurtbox.set_deferred("monitorable", false);
 	collision_shape.set_deferred("disabled", true);
 	enemy_drop_manager.drop();
+	remove_from_group("enemies");
 	
 	get_tree().create_timer(1.0).timeout.connect(queue_free);

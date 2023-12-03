@@ -17,3 +17,4 @@ var hud: HUD;
 var camera: Camera2D;
 var item_manager: ItemManager;
 var coin_manager: CoinManager;
+var player_hp: HealthManager;

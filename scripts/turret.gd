@@ -2,11 +2,12 @@ class_name Turret;
 extends StaticBody2D
 
 @export var enabled := true: set = set_enabled;
-@export var range := 300.0;
+@export var range := 200.0;
 @export var target_group_name := "player";
 
 @onready var pivot: Node2D = $Pivot
 @onready var cannons := $Pivot/Cannons.get_children();
+@export var rotation_speed := 2.0;
 
 var rotation_timer = 0.0;
 
@@ -14,8 +15,11 @@ func _physics_process(delta: float) -> void:
 	var closest_target := get_closest_target();
 	
 	if closest_target:
-		look_at(closest_target.global_position);
-
+		#look_at(closest_target.global_position);
+		var angle_to_target = pivot.to_global(Vector2.RIGHT).angle_to_point(closest_target.global_position);
+		
+		pivot.rotation = lerp_angle(pivot.rotation, angle_to_target, delta * rotation_speed * max(1.0, abs(angle_to_target)));
+		
 		for cannon in cannons:
 			cannon.fire();
 	

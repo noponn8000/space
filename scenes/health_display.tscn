@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://chtd123mj34u1"]
+
+[ext_resource type="Script" path="res://scripts/health_display.gd" id="1_rvytp"]
+[ext_resource type="PackedScene" uid="uid://cx44t7rhscfg4" path="res://scenes/energy_cell.tscn" id="2_wcmpj"]
+
+[node name="HealthDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rvytp")
+current_cells = 5
+
+[node name="EnergyCell" parent="." instance=ExtResource("2_wcmpj")]

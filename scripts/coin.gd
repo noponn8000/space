@@ -8,6 +8,9 @@ extends Area2D
 @export var magnet_range := 50.0;
 
 func _physics_process(delta: float) -> void:
+	if not Global.player:
+		return;
+
 	if global_position.distance_squared_to(Global.player.global_position) < magnet_range * magnet_range:
 		position += global_position.direction_to(Global.player.global_position) * magnet_speed * delta;
 		

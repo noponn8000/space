@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cac0kggs2ixks"]
+
+[ext_resource type="Script" path="res://scripts/homing_projectile.gd" id="1_d7sco"]
+[ext_resource type="Script" path="res://scripts/projectile_trail.gd" id="3_ka0s3"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_e8l38"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6xg5"]
+size = Vector2(2, 2)
+
+[node name="Homing" type="CharacterBody2D" node_paths=PackedStringArray("visibility_notifier", "hitbox")]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_d7sco")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+hitbox = NodePath("Hitbox")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.0823529, 1, 0.815686, 1)
+polygon = PackedVector2Array(-1, -1, -1, 1, 1, 1, 1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h6xg5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ProjectileTrail" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0.0392157, 0.478431, 0.392157, 1)
+script = ExtResource("3_ka0s3")
+point_limit = 5
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("4_e8l38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_h6xg5")

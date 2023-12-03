@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://drrx6py5gv1ch"]
+
+[ext_resource type="Script" path="res://scripts/shield.gd" id="1_pr2u1"]
+[ext_resource type="Texture2D" uid="uid://hht6vk7s3e37" path="res://assets/shield.png" id="2_aw1yk"]
+[ext_resource type="Script" path="res://scripts/hp_manager.gd" id="3_ygtvf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0sgyj"]
+radius = 2.0
+
+[node name="Shield" type="Area2D"]
+z_index = 3
+collision_mask = 16
+script = ExtResource("1_pr2u1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_aw1yk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0sgyj")
+
+[node name="HealthManager" type="Node" parent="."]
+script = ExtResource("3_ygtvf")

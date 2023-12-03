@@ -1,0 +1,160 @@
+[gd_scene load_steps=18 format=3 uid="uid://ceoniek6wg6re"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_panel.gd" id="1_7j770"]
+[ext_resource type="Texture2D" uid="uid://dp78liilo4a8o" path="res://assets/text_box.png" id="2_j7b1s"]
+[ext_resource type="Texture2D" uid="uid://cv7mi5plh3mnp" path="res://assets/dialogue_next_animation.png" id="3_bn63x"]
+[ext_resource type="FontFile" uid="uid://bujekr4x3n8i2" path="res://assets/fonts/Mystery_Font2.ttf" id="4_fvfv4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7xmp"]
+atlas = ExtResource("3_bn63x")
+region = Rect2(0, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfjyl"]
+atlas = ExtResource("3_bn63x")
+region = Rect2(4, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edp0g"]
+atlas = ExtResource("3_bn63x")
+region = Rect2(8, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmqvt"]
+atlas = ExtResource("3_bn63x")
+region = Rect2(12, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm11q"]
+atlas = ExtResource("3_bn63x")
+region = Rect2(16, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at7uq"]
+atlas = ExtResource("3_bn63x")
+region = Rect2(20, 0, 4, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7n34r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7xmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfjyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edp0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmqvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm11q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at7uq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="FontVariation" id="FontVariation_lcvub"]
+base_font = ExtResource("4_fvfv4")
+spacing_space = 8
+
+[sub_resource type="Theme" id="Theme_gxrlh"]
+default_font = SubResource("FontVariation_lcvub")
+default_font_size = 8
+
+[sub_resource type="Animation" id="Animation_tejue"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 90)]
+}
+
+[sub_resource type="Animation" id="Animation_3lnth"]
+resource_name = "pop_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.0717937, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 90)]
+}
+
+[sub_resource type="Animation" id="Animation_6dd8b"]
+resource_name = "pop_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.0883886, 1),
+"update": 0,
+"values": [Vector2(0, 90), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_61r06"]
+_data = {
+"RESET": SubResource("Animation_tejue"),
+"pop_down": SubResource("Animation_3lnth"),
+"pop_up": SubResource("Animation_6dd8b")
+}
+
+[node name="DialoguePanel" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -552.0
+offset_top = -1080.0
+offset_right = -512.0
+offset_bottom = -1040.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(12, 12)
+script = ExtResource("1_7j770")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 90.0
+offset_right = 41.0
+offset_bottom = 180.0
+texture = ExtResource("2_j7b1s")
+
+[node name="DialogueAnimation" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(35.3333, 80)
+sprite_frames = SubResource("SpriteFrames_7n34r")
+frame_progress = 0.555182
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = 1.5
+offset_right = 201.5
+offset_bottom = 401.5
+scale = Vector2(0.2, 0.2)
+theme = SubResource("Theme_gxrlh")
+text = "This is some example dialogue. Enjoy, friends."
+visible_characters = 46
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_61r06")
+}

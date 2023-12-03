@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2nv1oifxtb0e"]
+[gd_scene load_steps=11 format=3 uid="uid://d2nv1oifxtb0e"]
 
 [ext_resource type="FontFile" uid="uid://bujekr4x3n8i2" path="res://assets/fonts/Mystery_Font2.ttf" id="1_6ae6i"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_qkp7p"]
+[ext_resource type="PackedScene" uid="uid://ceoniek6wg6re" path="res://scenes/dialogue_panel.tscn" id="2_mfvsx"]
 [ext_resource type="PackedScene" uid="uid://f5wmyqryd68m" path="res://scenes/coin_manager.tscn" id="3_nhtch"]
 [ext_resource type="PackedScene" uid="uid://brb0gamtebsyq" path="res://scenes/thruster_bar.tscn" id="4_lakm3"]
 [ext_resource type="PackedScene" uid="uid://bal0jpfxfjdmw" path="res://scenes/item_holder.tscn" id="5_xnphm"]
 [ext_resource type="Texture2D" uid="uid://b4ejiqrsgyyv0" path="res://assets/control_panel.png" id="6_pdw40"]
+[ext_resource type="PackedScene" uid="uid://chtd123mj34u1" path="res://scenes/health_display.tscn" id="7_hj3yp"]
 
 [sub_resource type="FontVariation" id="FontVariation_q70fe"]
 base_font = ExtResource("1_6ae6i")
@@ -17,6 +19,8 @@ font = SubResource("FontVariation_q70fe")
 [node name="HUD" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_qkp7p")
+
+[node name="DialoguePanel" parent="." instance=ExtResource("2_mfvsx")]
 
 [node name="ControlPanel" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -84,3 +88,9 @@ offset_right = 118.0
 offset_bottom = 1068.0
 scale = Vector2(1.5, 1.5)
 label_settings = SubResource("LabelSettings_x1daq")
+
+[node name="HealthDisplay" parent="." instance=ExtResource("7_hj3yp")]
+offset_left = 152.0
+offset_top = 1008.0
+offset_right = 192.0
+offset_bottom = 1048.0
