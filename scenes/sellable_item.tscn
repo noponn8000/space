@@ -16,6 +16,7 @@ spacing_space = 8
 font = SubResource("FontVariation_grhp6")
 
 [node name="SellableItem" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_xsimr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

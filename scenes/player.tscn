@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cd6vgbhw31u2t"]
+[gd_scene load_steps=15 format=3 uid="uid://cd6vgbhw31u2t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_055b0"]
 [ext_resource type="Texture2D" uid="uid://b4iiyi4xtbpx7" path="res://assets/ship.png" id="2_3676p"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/item_manager.gd" id="8_f60fn"]
 [ext_resource type="AudioStream" uid="uid://c8pv54s5s4fh8" path="res://assets/sfx/Audio/spaceEngineLow_000.ogg" id="9_l44ww"]
 [ext_resource type="Script" path="res://scripts/hp_manager.gd" id="10_5tk5t"]
+[ext_resource type="AudioStream" uid="uid://vnvraxyej2re" path="res://assets/sfx/hitHurt.wav" id="10_gb81m"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b71aq"]
 particle_flag_disable_z = true
@@ -78,9 +79,12 @@ metadata/_edit_lock_ = true
 [node name="ItemManager" type="Node" parent="."]
 script = ExtResource("8_f60fn")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="EngineAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_l44ww")
 volume_db = -20.0
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_gb81m")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

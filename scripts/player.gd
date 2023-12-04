@@ -13,7 +13,8 @@ extends CharacterBody2D
 @onready var cannon := $Pivot/CannonComponent;
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var thruster: Sprite2D = $Pivot/Thruster
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D;
+@onready var engine_audio: AudioStreamPlayer2D = $EngineAudio;
+@onready var hurt_audio: AudioStreamPlayer2D = $HurtAudio;
 @onready var visibility_notifier := $VisibleOnScreenNotifier2D;
 @onready var health_manager := $HealthManager;
 
@@ -66,10 +67,10 @@ func _physics_process(delta: float) -> void:
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force);
 
 func update_sound() -> void:
-	if direction != Vector2.ZERO and !audio_stream_player_2d.playing:
-		audio_stream_player_2d.play();
-	elif direction == Vector2.ZERO and audio_stream_player_2d.playing:
-		audio_stream_player_2d.stop();
+	if direction != Vector2.ZERO and !engine_audio.playing:
+		engine_audio.play();
+	elif direction == Vector2.ZERO and engine_audio.playing:
+		engine_audio.stop();
 
 func update_sprite() -> void:
 	if velocity != Vector2.ZERO:
@@ -80,4 +81,5 @@ func update_sprite() -> void:
 		sprite.frame = 0;
 
 func on_hit_registered(hitbox: Hitbox) -> void:
+	hurt_audio.play();
 	health_manager.change_hp(-1);

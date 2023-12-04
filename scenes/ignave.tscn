@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ffktgpjo076"]
+
+[ext_resource type="Script" path="res://scripts/ignave.gd" id="1_a3jxn"]
+[ext_resource type="Texture2D" uid="uid://bvh66twnrfonp" path="res://assets/ignave.png" id="2_5e33y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ook4c"]
+radius = 48.0
+
+[node name="Ignave" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_a3jxn")
+character_name = "Ignave"
+character_color = Color(0.803922, 0.513726, 0.223529, 1)
+dialogue_file = "res://assets/dialogue/ignave.txt"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_5e33y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ook4c")

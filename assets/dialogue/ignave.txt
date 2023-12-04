@@ -1,17 +1,18 @@
+[dialogue]
 ...
 Another drone... What're you doing here, little guy?
 Wait a second... those thrusters... XCV-847, produced in 3048.
 Quite the curious specification for a run-of-the-mill drone.
 And the cannon! Something's off...
-
+[dialogue]
 AAAAH! Oh, what a misidentification on my part!
 Could it be that it's a sentient being?
-
+[dialogue]
 Anyway... 
 It has been a while since I saw anything other than drones and beasts.
 Please excuse my manners.
 Let us start over, perhaps.
-
+[dialogue]
 *Takes a moment to reboot*
 Hello, Ignave here. Ignave pronounced as Ignave, not Ignave.
 I am an engineer living in a traffic cone.
