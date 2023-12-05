@@ -10,6 +10,8 @@ extends Interactable;
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
+	super._ready();
+	
 	item_sprite.texture = Global.item_sprites[item];
 	quantity_label.text = str(quantity);
 	price_label.text = str(price);

@@ -49,10 +49,10 @@ layout_mode = 2
 anchor_left = 0.35
 anchor_right = 0.35
 anchor_bottom = 0.075
-offset_left = 35.0
-offset_top = 9.0
-offset_right = 51.0
-offset_bottom = 25.0
+offset_left = 70.0
+offset_top = 21.0
+offset_right = 86.0
+offset_bottom = 37.0
 scale = Vector2(2, 2)
 text = "0"
 label_settings = SubResource("LabelSettings_kw0nf")
@@ -63,6 +63,6 @@ libraries = {
 }
 
 [node name="CoinAnimated" parent="." instance=ExtResource("3_l8o1n")]
-position = Vector2(24, 18)
-scale = Vector2(4, 4)
+position = Vector2(41, 31)
+scale = Vector2(8, 8)
 autoplay = "default"

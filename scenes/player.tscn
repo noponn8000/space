@@ -24,7 +24,7 @@ scale_max = 4.0
 color = Color(0.960784, 0.741176, 0.337255, 0.541176)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ikxl"]
-radius = 2.5
+radius = 1.75
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vepvi"]
 size = Vector2(4, 3)

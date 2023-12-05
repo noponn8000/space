@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk31tn12obp2p"]
+
+[ext_resource type="Script" path="res://scripts/path_enemy.gd" id="1_mge3i"]
+
+[node name="PathMover" type="PathFollow2D"]
+script = ExtResource("1_mge3i")

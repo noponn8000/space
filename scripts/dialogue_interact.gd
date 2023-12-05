@@ -6,6 +6,7 @@ extends Interactable;
 @export var dialogue_file: String;
 
 var dialogues: Array[String] = [];
+var dialogue_index := 0;
 
 func _ready() -> void:
 	super._ready();
@@ -28,7 +29,18 @@ func load_dialogue() -> void:
 		dialogues.append(current_dialogue);
 			
 func interact() -> void:
-	Global.hud.dialogue_panel.push_dialogue(get_name_bbcode() + "\n" + dialogues[0], 5.0, true);
+	if Global.hud.dialogue_panel.playing:
+		Global.hud.dialogue_panel.skip_dialogue();
+		return;
+
+	if dialogue_index == 0:
+		Global.hud.dialogue_panel.push_dialogue(get_name_bbcode() + "\n" + dialogues[dialogue_index], 5.0, true);
+	elif dialogue_index < len(dialogues):
+		Global.hud.dialogue_panel.push_dialogue(dialogues[dialogue_index], 5.0, true);
+	else:
+		Global.hud.dialogue_panel.skip_dialogue();
+
+	dialogue_index += 1;
 
 func get_name_bbcode() -> String:
 	return "[color=" + character_color.to_html() + "]" + character_name + "[/color]";

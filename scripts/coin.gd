@@ -6,6 +6,10 @@ extends Area2D
 
 @export var magnet_speed := 100.0;
 @export var magnet_range := 50.0;
+@export var despawn_time := 10.0;
+
+func _ready() -> void:
+	get_tree().create_timer(despawn_time).timeout.connect(queue_free);
 
 func _physics_process(delta: float) -> void:
 	if not Global.player:

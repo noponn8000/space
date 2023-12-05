@@ -11,6 +11,7 @@ point_count = 4
 
 [node name="Rail" type="Path2D"]
 visibility_layer = 2
+scale = Vector2(4, 4)
 curve = SubResource("Curve2D_4nx4h")
 script = ExtResource("1_qbtgj")
 

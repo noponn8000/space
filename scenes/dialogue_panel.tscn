@@ -130,6 +130,7 @@ offset_bottom = -1040.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(12, 12)
+mouse_filter = 1
 script = ExtResource("1_7j770")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -140,6 +141,7 @@ offset_bottom = 180.0
 texture = ExtResource("2_j7b1s")
 
 [node name="DialogueAnimation" type="AnimatedSprite2D" parent="TextureRect"]
+visible = false
 position = Vector2(35.3333, 80)
 sprite_frames = SubResource("SpriteFrames_7n34r")
 frame_progress = 0.555182
@@ -153,7 +155,7 @@ offset_bottom = 400.0
 scale = Vector2(0.2, 0.2)
 theme = SubResource("Theme_gxrlh")
 bbcode_enabled = true
-visible_characters = 46
+scroll_following = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

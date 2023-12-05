@@ -7,6 +7,9 @@ extends Control
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var enabled := false;
+var playing := false;
+@onready var tween := get_tree().create_tween();
+@onready var anim_sprite: AnimatedSprite2D = $TextureRect/DialogueAnimation
 
 signal toggled (bool);
 signal dialogue_finished;
@@ -25,20 +28,45 @@ func toggle() -> void:
 	toggled.emit(enabled);
 
 func push_dialogue(data: String, animation_duration: float, force_open: bool = true, sound: bool = true) -> void:
+	if playing:
+		skip_dialogue();
+		return;
 	if force_open and !enabled:
 		toggle();
 	if sound:
 		audio.play();
-
+	
+	playing = true;
+	
+	toggle_dialogue_animation(false);
+	
 	text.text = text.text + "\n" + data;
-	var tween = get_tree().create_tween();
+	tween = get_tree().create_tween();
 	
-	tween.tween_property(text, "visible_characters", text.visible_characters + len(data), animation_duration);
-	
+	tween.tween_property(text, "visible_characters", text.get_total_character_count(), animation_duration);
+
 	await tween.finished;
 	if sound:
 		audio.stop();
 	dialogue_finished.emit();
+	playing = false;
+	toggle_dialogue_animation(true);
+	
+func toggle_dialogue_animation(on: bool) -> void:
+	if on:
+		anim_sprite.visible = true;
+		anim_sprite.play();
+	else:
+		anim_sprite.visible = false;
+		anim_sprite.stop();
+	
+func skip_dialogue() -> void:
+	if playing:
+		tween.stop();
+		audio.stop();
+		text.visible_characters = text.get_total_character_count();
+		toggle_dialogue_animation(true);
+		playing = false;
 	
 func push_dialogue_array(data: Array, animation_duration: float, force_open: bool = true, sound: bool = true) -> void:
 	for dialogue in data:
